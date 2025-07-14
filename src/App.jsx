@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import InventoryNavBar from './components/InventoryNavBar';
+import InventoryNavBar from './components/InventoryNavBar.jsx';
 import InventoryView from './components/InventoryView';
 import QuoteList from './components/QuoteList';
 import QuoteDocument from './components/QuoteDocument';
