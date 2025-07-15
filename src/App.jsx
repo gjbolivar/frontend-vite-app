@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import InventoryNavBar from './components/InventoryNavBar.jsx';
 import InventoryView from './components/InventoryView';
 import QuoteList from './components/QuoteList';
-import QuoteDocument from './components/QuoteDocument';
+import QuoteDocument from './components/QuoteDocument.jsx';
 import DeliveryList from './components/DeliveryList';
 import DeliveryDocument from './components/DeliveryDocument';
 import ReportsView from './components/ReportsView';

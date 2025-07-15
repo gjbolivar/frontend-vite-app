@@ -19,39 +19,48 @@ const DeliveryList = ({ onCreateNew, onViewDelivery }) => {
   };
 
   return (
-    <div className="p-4 sm:p-6 bg-white rounded-lg shadow-md">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl sm:text-2xl font-bold">Cotizaciones Aprobadas</h2>
+    <div className="p-6 bg-white rounded-2xl shadow-xl border border-gray-100">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
+          📦 Cotizaciones Aprobadas
+        </h2>
+        <button
+          onClick={onCreateNew}
+          className="btn-blue px-4 py-2 rounded-md text-white font-semibold shadow hover:shadow-md transition"
+        >
+          ➕ Nueva
+        </button>
       </div>
+
       {deliveries.length === 0 ? (
-        <p className="text-gray-500">No hay cotizaciones aprobadas creadas aún.</p>
+        <p className="text-gray-500 text-center">No hay cotizaciones aprobadas aún.</p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border border-gray-200">
-            <thead>
-              <tr className="bg-gray-100 text-left text-sm font-semibold text-gray-600">
-                <th className="py-2 px-4 border-b">ID</th>
-                <th className="py-2 px-4 border-b">Cliente</th>
-                <th className="py-2 px-4 border-b">Fecha</th>
-                <th className="py-2 px-4 border-b">Acciones</th>
+        <div className="overflow-x-auto rounded-lg border border-gray-200">
+          <table className="min-w-full text-sm divide-y divide-gray-200">
+            <thead className="bg-gray-50 text-gray-700 font-semibold">
+              <tr>
+                <th className="px-4 py-3 text-left">ID</th>
+                <th className="px-4 py-3 text-left">Cliente</th>
+                <th className="px-4 py-3 text-left">Fecha</th>
+                <th className="px-4 py-3 text-left">Acciones</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="divide-y divide-gray-100 bg-white">
               {deliveries.map((delivery) => (
                 <tr key={delivery.id} className="hover:bg-gray-50">
-                  <td className="py-2 px-4 border-b text-sm">{delivery.id}</td>
-                  <td className="py-2 px-4 border-b text-sm">{delivery.client}</td>
-                  <td className="py-2 px-4 border-b text-sm">{delivery.date}</td>
-                  <td className="py-2 px-4 border-b text-sm flex flex-col sm:flex-row space-y-1 sm:space-y-0 sm:space-x-2">
+                  <td className="px-4 py-2">{delivery.id}</td>
+                  <td className="px-4 py-2">{delivery.client}</td>
+                  <td className="px-4 py-2">{delivery.date}</td>
+                  <td className="px-4 py-2 flex flex-wrap gap-2">
                     <button
                       onClick={() => onViewDelivery(delivery)}
-                      className="text-blue-600 hover:text-blue-800 font-medium"
+                      className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm font-medium"
                     >
                       Ver
                     </button>
                     <button
                       onClick={() => handleDeleteDelivery(delivery.id)}
-                      className="text-red-600 hover:text-red-800 font-medium"
+                      className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm font-medium"
                     >
                       Eliminar
                     </button>
@@ -67,6 +76,3 @@ const DeliveryList = ({ onCreateNew, onViewDelivery }) => {
 };
 
 export default DeliveryList;
-
-
-// DONE
