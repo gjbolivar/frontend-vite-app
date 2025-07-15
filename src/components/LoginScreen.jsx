@@ -19,9 +19,9 @@ const LoginScreen = ({ onLogin }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center mb-6">Iniciar Sesión</h2>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-white to-green-100">
+      <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md border border-gray-200">
+        <h2 className="text-3xl font-extrabold text-center text-dark mb-6">🔐 Iniciar Sesión</h2>
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
             <label htmlFor="username" className="block text-sm font-medium text-gray-700">Usuario</label>
@@ -45,12 +45,12 @@ const LoginScreen = ({ onLogin }) => {
               required
             />
           </div>
-          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+          {error && <p className="text-red-500 text-sm text-center font-medium">{error}</p>}
           <button
             type="submit"
-            className="btn-blue"
+            className="btn-blue w-full text-lg"
           >
-            Ingresar
+            🚀 Ingresar
           </button>
         </form>
       </div>

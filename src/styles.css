@@ -5,25 +5,26 @@
 /* --- CLASES PERSONALIZADAS --- */
 
 .input-style {
-  @apply w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400;
+  @apply w-full border border-gray-300 rounded px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary;
 }
 
 .btn-blue {
-  @apply bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded;
+  @apply bg-primary hover:bg-blue-700 text-white px-4 py-2 rounded shadow-md transition;
 }
 
 .btn-green {
-  @apply bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded;
+  @apply bg-secondary hover:bg-green-700 text-white px-4 py-2 rounded shadow-md transition;
 }
 
 .btn-yellow {
-  @apply bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded;
+  @apply bg-accent hover:bg-yellow-600 text-white px-4 py-2 rounded shadow-md transition;
 }
 
 .btn-red {
-  @apply bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded;
+  @apply bg-danger hover:bg-red-700 text-white px-4 py-2 rounded shadow-md transition;
 }
 
 .btn-gray {
-  @apply bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded;
+  @apply bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded shadow-md transition;
 }
+
