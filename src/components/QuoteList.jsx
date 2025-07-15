@@ -49,68 +49,70 @@ const QuoteList = ({ onCreateNew, onViewQuote }) => {
   };
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-bold">Listado de Cotizaciones</h2>
-        <button
-          onClick={onCreateNew}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md"
-        >
-          Nueva Cotización
+    <div className="bg-white p-6 rounded-xl shadow-md">
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
+        <h2 className="text-2xl font-bold text-gray-800">📑 Cotizaciones</h2>
+        <button onClick={onCreateNew} className="btn-blue">
+          ➕ Nueva Cotización
         </button>
       </div>
+
       {quotes.length === 0 ? (
-        <p className="text-gray-500">No hay cotizaciones registradas.</p>
+        <p className="text-gray-500 text-center">No hay cotizaciones registradas.</p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="min-w-full text-sm border">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="p-2 border">N°</th>
-                <th className="p-2 border">Cliente</th>
-                <th className="p-2 border">Fecha</th>
-                <th className="p-2 border">Total</th>
-                <th className="p-2 border">Estado</th>
-                <th className="p-2 border">Acciones</th>
+        <div className="overflow-x-auto rounded-lg border border-gray-200">
+          <table className="min-w-full text-sm divide-y divide-gray-200">
+            <thead className="bg-gray-50 text-gray-700 font-semibold">
+              <tr>
+                <th className="px-4 py-3 text-left">N°</th>
+                <th className="px-4 py-3 text-left">Cliente</th>
+                <th className="px-4 py-3 text-left">Fecha</th>
+                <th className="px-4 py-3 text-left">Total</th>
+                <th className="px-4 py-3 text-left">Estado</th>
+                <th className="px-4 py-3 text-left">Acciones</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="divide-y divide-gray-100">
               {quotes.map((quote) => (
-                <tr key={quote.id} className="text-center border-t">
-                  <td className="p-2 border">{quote.id}</td>
-                  <td className="p-2 border">{quote.client}</td>
-                  <td className="p-2 border">{quote.date}</td>
-                  <td className="p-2 border">{quote.total?.toFixed(2)} {quote.currency?.toUpperCase()}</td>
-                  <td className="p-2 border capitalize">{quote.status}</td>
-                  <td className="p-2 border flex flex-wrap gap-2 justify-center">
-                    <button
-                      onClick={() => onViewQuote(quote)}
-                      className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded"
+                <tr key={quote.id} className="bg-white hover:bg-gray-50">
+                  <td className="px-4 py-2">{quote.id}</td>
+                  <td className="px-4 py-2">{quote.client}</td>
+                  <td className="px-4 py-2">{quote.date}</td>
+                  <td className="px-4 py-2">
+                    ${quote.total?.toFixed(2)} {quote.currency?.toUpperCase()}
+                  </td>
+                  <td className="px-4 py-2">
+                    <span
+                      className={`inline-block px-2 py-1 rounded-full text-xs font-semibold ${
+                        quote.status === 'aprobada'
+                          ? 'bg-green-100 text-green-700'
+                          : quote.status === 'devuelta'
+                          ? 'bg-yellow-100 text-yellow-700'
+                          : 'bg-gray-200 text-gray-700'
+                      }`}
                     >
-                      Ver
-                    </button>
-                    {quote.status !== 'aprobada' && (
-                      <button
-                        onClick={() => handleApprove(quote.id)}
-                        className="bg-green-600 hover:bg-green-700 text-white px-2 py-1 rounded"
-                      >
-                        Aprobar
+                      {quote.status}
+                    </span>
+                  </td>
+                  <td className="px-4 py-2">
+                    <div className="flex flex-wrap gap-2">
+                      <button onClick={() => onViewQuote(quote)} className="btn-blue text-sm px-3 py-1">
+                        Ver
                       </button>
-                    )}
-                    {quote.status === 'aprobada' && (
-                      <button
-                        onClick={() => handleReturn(quote.id)}
-                        className="bg-yellow-500 hover:bg-yellow-600 text-white px-2 py-1 rounded"
-                      >
-                        Devolver
+                      {quote.status !== 'aprobada' && (
+                        <button onClick={() => handleApprove(quote.id)} className="btn-green text-sm px-3 py-1">
+                          Aprobar
+                        </button>
+                      )}
+                      {quote.status === 'aprobada' && (
+                        <button onClick={() => handleReturn(quote.id)} className="btn-yellow text-sm px-3 py-1">
+                          Devolver
+                        </button>
+                      )}
+                      <button onClick={() => handleDelete(quote.id)} className="btn-red text-sm px-3 py-1">
+                        Eliminar
                       </button>
-                    )}
-                    <button
-                      onClick={() => handleDelete(quote.id)}
-                      className="bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded"
-                    >
-                      Eliminar
-                    </button>
+                    </div>
                   </td>
                 </tr>
               ))}

@@ -70,7 +70,7 @@ const InventoryActions = ({ selectedPart, onSave, onCancel }) => {
 
       if (!response.ok) throw new Error('Error al guardar los datos del producto');
 
-      onSave(newPart); // callback al padre (InventoryView) para recargar
+      onSave(newPart);
     } catch (error) {
       console.error('Error al guardar el producto:', error);
       alert('Error al guardar. Revisa la consola para más detalles.');
@@ -85,53 +85,53 @@ const InventoryActions = ({ selectedPart, onSave, onCancel }) => {
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         <div>
           <label htmlFor="partNumber">Código</label>
-          <input type="text" id="partNumber" value={partNumber} onChange={(e) => setPartNumber(e.target.value)} required />
+          <input type="text" id="partNumber" className="input-style" value={partNumber} onChange={(e) => setPartNumber(e.target.value)} required />
         </div>
         <div>
           <label htmlFor="description">Descripción</label>
-          <input type="text" id="description" value={description} onChange={(e) => setDescription(e.target.value)} required />
+          <input type="text" id="description" className="input-style" value={description} onChange={(e) => setDescription(e.target.value)} required />
         </div>
         <div>
           <label htmlFor="brand">Marca</label>
-          <input type="text" id="brand" value={brand} onChange={(e) => setBrand(e.target.value)} required />
+          <input type="text" id="brand" className="input-style" value={brand} onChange={(e) => setBrand(e.target.value)} required />
         </div>
         <div>
           <label htmlFor="model">Modelo</label>
-          <input type="text" id="model" value={model} onChange={(e) => setModel(e.target.value)} />
+          <input type="text" id="model" className="input-style" value={model} onChange={(e) => setModel(e.target.value)} />
         </div>
         <div className="md:col-span-2">
           <label htmlFor="compatibleModels">Modelos Compatibles (separados por coma)</label>
-          <input type="text" id="compatibleModels" value={compatibleModels} onChange={(e) => setCompatibleModels(e.target.value)} />
+          <input type="text" id="compatibleModels" className="input-style" value={compatibleModels} onChange={(e) => setCompatibleModels(e.target.value)} />
         </div>
         <div>
           <label htmlFor="price">Precio</label>
-          <input type="number" id="price" step="0.01" value={price} onChange={(e) => setPrice(e.target.value)} required />
+          <input type="number" id="price" step="0.01" className="input-style" value={price} onChange={(e) => setPrice(e.target.value)} required />
         </div>
         <div>
           <label htmlFor="cost">Costo</label>
-          <input type="number" id="cost" step="0.01" value={cost} onChange={(e) => setCost(e.target.value)} required />
+          <input type="number" id="cost" step="0.01" className="input-style" value={cost} onChange={(e) => setCost(e.target.value)} required />
         </div>
         <div>
           <label htmlFor="stock">Stock</label>
-          <input type="number" id="stock" value={stock} onChange={(e) => setStock(e.target.value)} required />
+          <input type="number" id="stock" className="input-style" value={stock} onChange={(e) => setStock(e.target.value)} required />
         </div>
         <div>
           <label htmlFor="location">Ubicación</label>
-          <input type="text" id="location" value={location} onChange={(e) => setLocation(e.target.value)} />
+          <input type="text" id="location" className="input-style" value={location} onChange={(e) => setLocation(e.target.value)} />
         </div>
         <div>
           <label htmlFor="warehouse">Almacén</label>
-          <select id="warehouse" value={warehouseId} onChange={(e) => setWarehouseId(e.target.value)} required>
+          <select id="warehouse" className="input-style" value={warehouseId} onChange={(e) => setWarehouseId(e.target.value)} required>
             {warehouses.map(warehouse => (
               <option key={warehouse.id} value={warehouse.id}>{warehouse.name}</option>
             ))}
           </select>
         </div>
         <div className="md:col-span-2 flex justify-end space-x-3 mt-4">
-          <button type="button" onClick={onCancel} className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-md">
+          <button type="button" onClick={onCancel} className="btn-gray">
             Cancelar
           </button>
-          <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">
+          <button type="submit" className="btn-blue">
             {selectedPart ? 'Guardar Cambios' : 'Agregar Repuesto'}
           </button>
         </div>

@@ -140,14 +140,14 @@ const InventoryView = () => {
               <input
                 type="text"
                 placeholder="Buscar por código, nombre o marca"
-                className="w-full sm:w-64 px-4 py-2 border rounded-md"
+                className="input-style"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
               <select
                 value={selectedWarehouse}
                 onChange={(e) => setSelectedWarehouse(e.target.value)}
-                className="px-4 py-2 border rounded-md"
+                className="input-style"
               >
                 <option value="all">Todos los Almacenes</option>
                 {warehouses.map((w) => (
@@ -164,14 +164,14 @@ const InventoryView = () => {
                   setViewMode('form');
                   setSelectedPart(null);
                 }}
-                className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                className="btn-green"
               >
                 + Agregar Nuevo Repuesto
               </button>
 
               <button
                 onClick={handleExportExcel}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                className="btn-blue"
               >
                 📥 Exportar Excel
               </button>
@@ -226,13 +226,13 @@ const InventoryView = () => {
                         setSelectedPart(part);
                         setViewMode('form');
                       }}
-                      className="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-3 rounded"
+                      className="btn-yellow"
                     >
                       Editar
                     </button>
                     <button
                       onClick={() => handleDeletePart(part.id)}
-                      className="bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-3 rounded"
+                      className="btn-red"
                     >
                       Eliminar
                     </button>

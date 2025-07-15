@@ -3,18 +3,16 @@ import React, { useState } from 'react';
 const InventoryNavBar = ({ activeTab, setActiveTab, currentUser }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Definir todas las pestañas posibles
   const allTabs = [
     { id: 'inventory', name: 'Repuestos' },
     { id: 'quotes', name: 'Cotizaciones' },
-    { id: 'deliveries', name: 'Cotizaciones Aprobadas' }, // Cambiado a Cotizaciones Aprobadas
+    { id: 'deliveries', name: 'Cotizaciones Aprobadas' },
     { id: 'reports', name: 'Reportes' },
     { id: 'clients', name: 'Clientes' },
     { id: 'sellers', name: 'Vendedores' },
     { id: 'users', name: 'Usuarios' }
   ];
 
-  // Determinar las pestañas accesibles
   let accessibleTabs = [];
   if (currentUser) {
     if (currentUser.role === 'admin') {
@@ -36,7 +34,7 @@ const InventoryNavBar = ({ activeTab, setActiveTab, currentUser }) => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
+                className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200 ease-in-out ${
                   activeTab === tab.id
                     ? 'border-blue-500 text-blue-600'
                     : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
@@ -79,7 +77,7 @@ const InventoryNavBar = ({ activeTab, setActiveTab, currentUser }) => {
                   setActiveTab(tab.id);
                   setIsOpen(false);
                 }}
-                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${
+                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ease-in-out ${
                   activeTab === tab.id
                     ? 'bg-blue-50 text-blue-700'
                     : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'

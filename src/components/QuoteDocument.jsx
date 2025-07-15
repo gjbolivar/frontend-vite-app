@@ -93,8 +93,8 @@ const QuoteDocument = ({ quote, onBackToList, onSaveQuote }) => {
   };
 
   return (
-    <div className="bg-white p-6 rounded shadow">
-      <h2 className="text-2xl font-bold mb-4">
+    <div className="bg-white p-6 rounded-xl shadow">
+      <h2 className="text-2xl font-bold mb-4 text-gray-800">
         Cotización #{editableQuote.id || 'Nueva'}
       </h2>
 
@@ -105,14 +105,14 @@ const QuoteDocument = ({ quote, onBackToList, onSaveQuote }) => {
           value={editableQuote.client}
           onChange={handleChange}
           placeholder="Cliente"
-          className="border px-3 py-2 rounded w-full"
+          className="input-style"
         />
         <input
           type="date"
           name="date"
           value={editableQuote.date}
           onChange={handleChange}
-          className="border px-3 py-2 rounded w-full"
+          className="input-style"
         />
         <input
           type="text"
@@ -120,7 +120,7 @@ const QuoteDocument = ({ quote, onBackToList, onSaveQuote }) => {
           value={editableQuote.address}
           onChange={handleChange}
           placeholder="Dirección"
-          className="border px-3 py-2 rounded w-full"
+          className="input-style"
         />
         <input
           type="text"
@@ -128,7 +128,7 @@ const QuoteDocument = ({ quote, onBackToList, onSaveQuote }) => {
           value={editableQuote.phone}
           onChange={handleChange}
           placeholder="Teléfono"
-          className="border px-3 py-2 rounded w-full"
+          className="input-style"
         />
       </div>
 
@@ -150,7 +150,7 @@ const QuoteDocument = ({ quote, onBackToList, onSaveQuote }) => {
                 <input
                   value={item.name}
                   onChange={(e) => handleItemChange(idx, 'name', e.target.value)}
-                  className="w-full border px-2 py-1 rounded"
+                  className="input-style"
                 />
               </td>
               <td className="border p-2">
@@ -158,7 +158,7 @@ const QuoteDocument = ({ quote, onBackToList, onSaveQuote }) => {
                   type="number"
                   value={item.quantity}
                   onChange={(e) => handleItemChange(idx, 'quantity', e.target.value)}
-                  className="w-full border px-2 py-1 rounded"
+                  className="input-style"
                 />
               </td>
               <td className="border p-2">
@@ -166,7 +166,7 @@ const QuoteDocument = ({ quote, onBackToList, onSaveQuote }) => {
                   type="number"
                   value={item.price}
                   onChange={(e) => handleItemChange(idx, 'price', e.target.value)}
-                  className="w-full border px-2 py-1 rounded"
+                  className="input-style"
                 />
               </td>
               <td className="border p-2">
@@ -175,7 +175,7 @@ const QuoteDocument = ({ quote, onBackToList, onSaveQuote }) => {
               <td className="border p-2">
                 <button
                   onClick={() => handleRemoveItem(idx)}
-                  className="text-red-500 hover:underline"
+                  className="btn-red text-sm px-2 py-1"
                 >
                   Quitar
                 </button>
@@ -187,7 +187,7 @@ const QuoteDocument = ({ quote, onBackToList, onSaveQuote }) => {
 
       <button
         onClick={handleAddItem}
-        className="mb-4 bg-gray-300 px-3 py-1 rounded hover:bg-gray-400"
+        className="btn-gray mb-4 text-sm px-3 py-1"
       >
         + Agregar producto
       </button>
@@ -197,36 +197,21 @@ const QuoteDocument = ({ quote, onBackToList, onSaveQuote }) => {
       </p>
 
       <div className="flex flex-wrap gap-3">
-        <button
-          onClick={onBackToList}
-          className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
-        >
+        <button onClick={onBackToList} className="btn-gray">
           Volver
         </button>
-        <button
-          onClick={handleSave}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
+        <button onClick={handleSave} className="btn-blue">
           Guardar
         </button>
         {editableQuote.id && (
           <>
-            <button
-              onClick={handleApprove}
-              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-            >
+            <button onClick={handleApprove} className="btn-green">
               Aprobar
             </button>
-            <button
-              onClick={handleReturn}
-              className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
-            >
+            <button onClick={handleReturn} className="btn-yellow">
               Devolver
             </button>
-            <button
-              onClick={handleDelete}
-              className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
-            >
+            <button onClick={handleDelete} className="btn-red">
               Eliminar
             </button>
           </>
