@@ -103,8 +103,8 @@ const InventoryView = () => {
       {viewMode === 'form' ? (
         <InventoryActions
           selectedPart={selectedPart}
-          onSave={handleSavePart}
-          onCancel={handleCancel}
+          onSave={() => handleSavePart()}
+          onCancel={() => handleCancel()}
         />
       ) : (
         <>
